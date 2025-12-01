@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #8a8a8a;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+body.page-loaded {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+.logo {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+}
+
+.logo a {
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+}
+
+.logo h1 {
+    font-size: 65px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover h1 {
+    opacity: 0.8;
+}
+
+
+.back-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: translateX(-5px);
+}
+
+
+.team-section {
+    position: fixed;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 100;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.member-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-name {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    min-width: 200px;
+}
+
+
+.about-section {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    z-index: 100;
+    padding: 0 8%;
+}
+
+.team-image-panel {
+    flex: 1;
+    min-height: 100%;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.team-image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-text-panel {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-text-panel h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #000000;
+}
+
+.about-text-panel p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.about-text-panel p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - ALL SCREEN SIZES
+   ======================================== */
+
+
+@media (max-width: 575px) {
+    .logo {
+        top: 15px;
+        left: 15px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .back-btn {
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+
+    .about-section {
+        padding: 0 15px;
+        flex-direction: column;
+        height: auto;
+        min-height: 80%;
+        top: 50%;
+    }
+
+    .team-image-panel {
+        min-height: 200px;
+        max-height: 250px;
+        flex: none;
+    }
+
+    .about-text-panel {
+        padding: 30px 20px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .about-text-panel p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+}
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .logo {
+        top: 20px;
+        left: 20px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .back-btn {
+        bottom: 20px;
+        left: 20px;
+        padding: 11px 20px;
+        font-size: 0.9rem;
+    }
+
+    .about-section {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        min-height: 70%;
+    }
+
+    .team-image-panel {
+        min-height: 250px;
+        max-height: 300px;
+        flex: none;
+    }
+
+    .about-text-panel {
+        padding: 40px 30px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .about-text-panel p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .logo {
+        top: 25px;
+        left: 25px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    .back-btn {
+        bottom: 25px;
+        left: 25px;
+        padding: 11px 22px;
+        font-size: 0.95rem;
+    }
+
+    .about-section {
+        padding: 0 5%;
+        flex-direction: column;
+        height: auto;
+        min-height: 70%;
+    }
+
+    .team-image-panel {
+        min-height: 300px;
+        max-height: 350px;
+        flex: none;
+    }
+
+    .about-text-panel {
+        padding: 50px 40px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .about-text-panel p {
+        font-size: 1.05rem;
+        line-height: 1.75;
+    }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-section {
+        padding: 0 6%;
+        height: 65%;
+    }
+
+    .about-text-panel {
+        padding: 55px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-text-panel p {
+        font-size: 1.05rem;
+    }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .about-section {
+        padding: 0 7%;
+        height: 62%;
+    }
+
+    .about-text-panel {
+        padding: 58px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 2.4rem;
+    }
+}
+
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .about-section {
+        padding: 0 8%;
+        height: 60%;
+    }
+}
+
+
+@media (min-width: 1920px) {
+    .logo {
+        top: 40px;
+        left: 40px;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .back-btn {
+        bottom: 40px;
+        left: 40px;
+        padding: 14px 28px;
+        font-size: 1.1rem;
+    }
+
+    .about-section {
+        padding: 0 10%;
+        height: 65%;
+    }
+
+    .about-text-panel {
+        padding: 80px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+
+    .about-text-panel p {
+        font-size: 1.3rem;
+        line-height: 2;
+        margin-bottom: 25px;
+    }
+}
+
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .logo {
+        top: 10px;
+        left: 10px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .back-btn {
+        bottom: 10px;
+        left: 10px;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .about-section {
+        height: auto;
+        min-height: 85%;
+        padding: 0 10px;
+    }
+
+    .team-image-panel {
+        min-height: 150px;
+        max-height: 200px;
+    }
+
+    .about-text-panel {
+        padding: 20px;
+    }
+
+    .about-text-panel h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .about-text-panel p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+}

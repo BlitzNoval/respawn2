@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Two Guys - Interactive Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    
+    <div class="logo">
+        <a href="index.html">
+            <h1>Just Two Guys</h1>
+        </a>
+    </div>
+
+    
+
+    
+    <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" onclick="navigateLeft()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <button class="nav-arrow nav-arrow-right" id="nav-arrow-right" onclick="navigateRight()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+
+    
+    <div class="game-info-panel">
+        <h2 id="game-title">Aim Trainer</h2>
+        <p id="game-description">Practice your precision</p>
+        <button id="view-project-btn" class="view-project-btn" onclick="openPanelFromInfo()">View Project</button>
+    </div>
+
+    
+
+<div class="social-buttons">
+    <a href="https://x.com/JsTwoGuysStudio" class="social-btn" data-platform="twitter" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        <span>Twitter</span>
+    </a>
+
+    <a href="https://www.reddit.com/user/JustTwoGuysGames/" class="social-btn" data-platform="reddit" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+        </svg>
+        <span>Reddit</span>
+    </a>
+        <a href="https://justtwoguys.itch.io/" class="social-btn" data-platform="itch" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45c1.33 0 2.436-1.102 2.436-2.41c0 1.308 1.07 2.41 2.4 2.41c1.328 0 2.41-1.102 2.41-2.41c0 1.308 1.07 2.41 2.4 2.41c1.329 0 2.41-1.102 2.41-2.41c0 1.308 1.082 2.41 2.41 2.41c1.33 0 2.4-1.102 2.4-2.41c0 1.308 1.106 2.41 2.436 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612c-3.253-.114-5.508-.134-8.87-.134c-3.362 0-5.617.02-8.87.134zm6.376 6.477a2.74 2.74 0 0 1 2.74 2.74a2.74 2.74 0 0 1-2.74 2.74a2.74 2.74 0 0 1-2.74-2.74a2.74 2.74 0 0 1 2.74-2.74zm5.5 0a2.74 2.74 0 0 1 2.74 2.74a2.74 2.74 0 0 1-2.74 2.74a2.74 2.74 0 0 1-2.74-2.74a2.74 2.74 0 0 1 2.74-2.74zM2.325 10.01c-1.106 0-2.325 1.038-2.325 2.435c0 1.397 1.22 2.436 2.325 2.436c1.33 0 2.436-1.04 2.436-2.436c0-1.397-1.106-2.436-2.436-2.436zm19.35 0c-1.33 0-2.436 1.038-2.436 2.435c0 1.397 1.106 2.436 2.436 2.436c1.106 0 2.325-1.04 2.325-2.436c0-1.397-1.22-2.436-2.325-2.436zm-7.918 1.917c-.682 0-1.014 1.53-1.014 2.436c0 .906.332 1.957 1.014 1.957c.683 0 1.015-1.05 1.015-1.957c0-.906-.332-2.436-1.015-2.436zm-4.636 3.957c0 3.426.96 5.12 4.636 5.12c3.676 0 4.636-1.694 4.636-5.12c0-.682-4.636-1.015-4.636-1.015s-4.636.333-4.636 1.015z"/>
+            </svg>
+            <span>Itch.io</span>
+        </a>
+    </div>
+
+    
+    <div class="info-buttons">
+        <button class="info-btn" onclick="openAboutPanel()">About Us</button>
+        <button class="info-btn" onclick="openContactPanel()">Contact Us</button>
+    </div>
+
+    
+    <div class="contact-panel-overlay" id="contact-panel-overlay">
+        <button class="back-btn" onclick="closeContactPanel()">Back</button>
+
+        <div class="contact-container">
+            <div class="contact-panel">
+                <h2>Get in touch with us</h2>
+
+                <div class="contact-content">
+                    <div class="linkedin-links">
+                        <a href="https://www.linkedin.com/in/liammoodley/" class="linkedin-btn" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>Liam Moodley</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/christopher-ridley-36a59b22b/" class="linkedin-btn" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>Christopher Ridley</span>
+                        </a>
+                    </div>
+
+                    <div class="email-section">
+                        <a href="mailto:contact@justtwoguys.com" class="email-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>contact@justtwoguys.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="about-panel-overlay" id="about-panel-overlay">
+        <button class="back-btn" onclick="closeAboutPanel()">Back</button>
+
+        <div class="about-container">
+            <div class="about-section">
+                <div class="team-image-panel">
+                    <img src="./Media/Team.jpg" alt="Team Photo">
+                </div>
+
+                <div class="about-text-panel">
+                    <h2>About Just Two Guys</h2>
+                    <p>We're a small indie game studio passionate about creating unique multiplayer experiences.</p>
+                    <p>Started making games together in 2023, officially founded in 2025. We focus on bringing people together through innovative gameplay and memorable moments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="page-transition-overlay"></div>
+
+    
+    <!-- game panels  -->
+    <div class="bento-panel" id="panel-aimtrainer">
+        <button class="close-btn" onclick="closePanel('panel-aimtrainer')">×</button>
+
+        
+        <button class="panel-nav-arrow panel-nav-arrow-left" onclick="navigatePanelLeft()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="panel-nav-arrow panel-nav-arrow-right" onclick="navigatePanelRight()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="panel-content">
+            <div class="panel-left">
+                <h3 class="section-title">Game Trailer</h3>
+                <div class="video-panel">
+                    <!-- autoplay because btns are bad -->
+                    <video id="video-aimtrainer" muted loop playsinline autoplay>
+                        <source src="./Media/VALORANT.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <div class="progress-bar" onclick="scrubVideo(event, 'video-aimtrainer')">
+                            <div class="progress-fill" id="progress-aimtrainer"></div>
+                        </div>
+                        <div class="control-buttons">
+                            <button class="play-btn" onclick="togglePlay('video-aimtrainer')">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                <div class="card-stack-container">
+                    <h3 class="section-title">Aim Trainer</h3>
+                    <div class="card-stack-wrapper">
+                        <!-- pancakes -->
+                        <div class="card-stack" id="card-stack-aimtrainer">
+                            <div class="info-card active" data-index="0">
+                                <h2>Overview</h2>
+                                <p>Sharpen your accuracy and reaction time with both standard and hardcore modes. The goal is simple: hit as many targets as you can before the timer runs out.</p>
+                            </div>
+                            <div class="info-card" data-index="1">
+                                <h2>Features</h2>
+                                <p>• Single player<br>• Ray tracing for clean hit detection<br>• Customizable target spawn timing<br>• Multiple difficulty levels with a full scoring system</p>
+                            </div>
+                            <div class="info-card" data-index="2">
+                                <h2>Development</h2>
+                                <p>Built in Unity 5 URP with full support across all screen sizes. Our ray tracing and scan based system tracks player aim in real time for a smooth feel.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card-navigation">
+                            <div class="scroll-indicator">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div class="card-dots" id="dots-aimtrainer">
+                                <span class="dot active" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="bento-panel" id="panel-respawn2">
+        <button class="close-btn" onclick="closePanel('panel-respawn2')">×</button>
+
+        
+        <button class="panel-nav-arrow panel-nav-arrow-left" onclick="navigatePanelLeft()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="panel-nav-arrow panel-nav-arrow-right" onclick="navigatePanelRight()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="panel-content">
+            <div class="panel-left">
+                <h3 class="section-title">Game Trailer</h3>
+                <div class="video-panel">
+                    <video id="video-respawn2" muted loop playsinline autoplay>
+                        <source src="./Media/Just Two Guys - Respawn Gameplay (1).mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <div class="progress-bar" onclick="scrubVideo(event, 'video-respawn2')">
+                            <div class="progress-fill" id="progress-respawn2"></div>
+                        </div>
+                        <div class="control-buttons">
+                            <button class="play-btn" onclick="togglePlay('video-respawn2')">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                <div class="card-stack-container">
+                    <h3 class="section-title">Respawn²</h3>
+                    <div class="card-stack-wrapper">
+                        <div class="card-stack" id="card-stack-respawn2">
+                          
+                            <div class="info-card active" data-index="0">
+                                <h2>Overview</h2>
+                                <p>A fast paced multiplayer isometric PVP shooter where strategy and chaos collide. Players queue into intense 1v1 matches and battle across tight arenas using cover, terrain height, and a range of weapons to outplay each other across seven rounds.</p>
+                            </div>
+                            <div class="info-card" data-index="1">
+                                <h2>Features</h2>
+                                <p>• Online 1v1 matchmaking<br>• Multiple isometric arenas<br>• Custom weapon system with recoil and spread<br>• Quick respawn and round based scoring<br>• Controller and keyboard support</p>
+                            </div>
+                            <div class="info-card" data-index="2">
+                                <h2>Development</h2>
+                                <p>Built in Unity with a heavyweight cloud based multiplayer setup for fast reconnects and match cycles, accounts and much more. We designed all arenas, weapon systems, and VFX in house, keeping the focus on tight combat flow. The game was a big test of building clean round logic, matchmaking, and fast paced combat systems on a 1 year timeline.</p>
+                            </div>
+                        </div>
+                        <div class="card-navigation">
+                            <div class="scroll-indicator">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div class="card-dots" id="dots-respawn2">
+                                <span class="dot active" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="bento-panel" id="panel-bombbrawl">
+        <button class="close-btn" onclick="closePanel('panel-bombbrawl')">×</button>
+
+        
+        <button class="panel-nav-arrow panel-nav-arrow-left" onclick="navigatePanelLeft()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="panel-nav-arrow panel-nav-arrow-right" onclick="navigatePanelRight()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="panel-content">
+            <div class="panel-left">
+                <h3 class="section-title">Game Trailer</h3>
+                <div class="video-panel">
+                    <video id="video-bombbrawl" muted loop playsinline autoplay>
+                        <source src="./Media/BombBrawlTrailer.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <div class="progress-bar" onclick="scrubVideo(event, 'video-bombbrawl')">
+                            <div class="progress-fill" id="progress-bombbrawl"></div>
+                        </div>
+                        <div class="control-buttons">
+                            <button class="play-btn" onclick="togglePlay('video-bombbrawl')">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                <div class="card-stack-container">
+                    <h3 class="section-title">Bomb Brawl</h3>
+                    <div class="card-stack-wrapper">
+                        <div class="card-stack" id="card-stack-bombbrawl">
+                            <!-- made this in a month somehow -->
+                            <div class="info-card active" data-index="0">
+                                <h2>Overview</h2>
+                                <p>Explosive online chaos in a peer to peer multiplayer arena where the last survivor takes the win. Plan your plays and read your opponents while trying not to be the one holding the bomb when it goes off.</p>
+                            </div>
+                            <div class="info-card" data-index="1">
+                                <h2>Features</h2>
+                                <p>• Unity Mirror powered multiplayer<br>• Isometric arenas<br>• Cross platform on PC and console<br>• Emotes for in game expression</p>
+                            </div>
+                            <div class="info-card" data-index="2">
+                                <h2>Development</h2>
+                                <p>All gameplay, art, animation, and assets were created in house. Made in Unity 6 HDRP over the course of one month by a three person team plus an animator. We handled all networking, UI, and level design ourselves using Mirror and Photon for hosting.</p>
+                            </div>
+                        </div>
+                        <div class="card-navigation">
+                            <div class="scroll-indicator">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div class="card-dots" id="dots-bombbrawl">
+                                <span class="dot active" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="bento-panel" id="panel-paddle">
+        <button class="close-btn" onclick="closePanel('panel-paddle')">×</button>
+
+        
+        <button class="panel-nav-arrow panel-nav-arrow-left" onclick="navigatePanelLeft()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="panel-nav-arrow panel-nav-arrow-right" onclick="navigatePanelRight()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="panel-content">
+            <div class="panel-left">
+                <h3 class="section-title">Game Trailer</h3>
+                <div class="video-panel">
+                    <video id="video-paddle" muted loop playsinline autoplay>
+                        <source src="./Media/PaddleTrailer.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <div class="progress-bar" onclick="scrubVideo(event, 'video-paddle')">
+                            <div class="progress-fill" id="progress-paddle"></div>
+                        </div>
+                        <div class="control-buttons">
+                            <button class="play-btn" onclick="togglePlay('video-paddle')">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <svg class="pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="6" y="4" width="4" height="16"></rect>
+                                    <rect x="14" y="4" width="4" height="16"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                <div class="card-stack-container">
+                    <h3 class="section-title">Paddle</h3>
+                    <div class="card-stack-wrapper">
+                        <div class="card-stack" id="card-stack-paddle">
+                            <!-- game speedrun -->
+                            <div class="info-card active" data-index="0">
+                                <h2>Overview</h2>
+                                <p>Paddle was our two day game jam project built around the challenge of realistic paddling physics. Players steer down a dangerous river using mouse based left and right paddling.</p>
+                            </div>
+                            <div class="info-card" data-index="1">
+                                <h2>Features</h2>
+                                <p>• In house water physics system<br>• Custom water shader and toon shader<br>• Endless procedural terrain</p>
+                            </div>
+                            <div class="info-card" data-index="2">
+                                <h2>Development</h2>
+                                <p>The terrain system around the player is fully procedural and required a tight technical setup that we handled from scratch. Creating convincing paddling physics tied to water movement was a tough task given the two day limit, but we hit the feel we wanted. Built in Unity URP.</p>
+                            </div>
+                        </div>
+                        <div class="card-navigation">
+                            <div class="scroll-indicator">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div class="card-dots" id="dots-paddle">
+                                <span class="dot active" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- javascript carry lol -->
+    <script type="module" src="/threejs-scene.js"></script>
+    <script type="module" src="/main.js"></script>
+    <script src="/page-transition.js"></script>
+</body>
+</html>
