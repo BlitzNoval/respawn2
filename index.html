@@ -149,8 +149,10 @@
                 <h3 class="section-title">Game Trailer</h3>
                 <div class="video-panel">
                     <!-- autoplay because btns are bad -->
-                    <video id="video-aimtrainer" muted loop playsinline autoplay>
-                        <source src="/Media/VALORANT.mp4" type="video/mp4">
+                    <div class="video-loading-spinner" id="spinner-aimtrainer">
+                        <div class="spinner"></div>
+                    </div>
+                    <video id="video-aimtrainer" muted loop playsinline preload="none" data-src="/Media/VALORANT.mp4">
                     </video>
                     <div class="video-controls">
                         <div class="progress-bar" onclick="scrubVideo(event, 'video-aimtrainer')">
@@ -228,8 +230,10 @@
             <div class="panel-left">
                 <h3 class="section-title">Game Trailer</h3>
                 <div class="video-panel">
-                    <video id="video-respawn2" muted loop playsinline autoplay>
-                        <source src="/Media/Just Two Guys - Respawn Gameplay (1).mp4" type="video/mp4">
+                    <div class="video-loading-spinner" id="spinner-respawn2">
+                        <div class="spinner"></div>
+                    </div>
+                    <video id="video-respawn2" muted loop playsinline preload="none" data-src="/Media/Just Two Guys - Respawn Gameplay (1).mp4">
                     </video>
                     <div class="video-controls">
                         <div class="progress-bar" onclick="scrubVideo(event, 'video-respawn2')">
@@ -306,8 +310,10 @@
             <div class="panel-left">
                 <h3 class="section-title">Game Trailer</h3>
                 <div class="video-panel">
-                    <video id="video-bombbrawl" muted loop playsinline autoplay>
-                        <source src="/Media/BombBrawlTrailer.mp4" type="video/mp4">
+                    <div class="video-loading-spinner" id="spinner-bombbrawl">
+                        <div class="spinner"></div>
+                    </div>
+                    <video id="video-bombbrawl" muted loop playsinline preload="none" data-src="/Media/BombBrawlTrailer.mp4">
                     </video>
                     <div class="video-controls">
                         <div class="progress-bar" onclick="scrubVideo(event, 'video-bombbrawl')">
@@ -384,8 +390,10 @@
             <div class="panel-left">
                 <h3 class="section-title">Game Trailer</h3>
                 <div class="video-panel">
-                    <video id="video-paddle" muted loop playsinline autoplay>
-                        <source src="/Media/PaddleTrailer.mp4" type="video/mp4">
+                    <div class="video-loading-spinner" id="spinner-paddle">
+                        <div class="spinner"></div>
+                    </div>
+                    <video id="video-paddle" muted loop playsinline preload="none" data-src="/Media/PaddleTrailer.mp4">
                     </video>
                     <div class="video-controls">
                         <div class="progress-bar" onclick="scrubVideo(event, 'video-paddle')">

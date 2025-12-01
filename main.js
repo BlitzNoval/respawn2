@@ -12,25 +12,63 @@ window.openPanel = function(panelId) {
 
         const video = panel.querySelector('video');
         if (video) {
-            video.load();
-            setTimeout(() => {
-                video.play().then(() => {
-                    const playBtn = video.parentElement.querySelector('.play-btn');
-                    if (playBtn) playBtn.classList.add('playing');
-                }).catch(err => {
-                    console.log('Autoplay prevented:', err);
-                    const playBtn = video.parentElement.querySelector('.play-btn');
-                    if (playBtn) {
-                        playBtn.classList.remove('playing');
-                    }
-                });
-            }, 100);
+            lazyLoadVideo(video);
         }
 
         if (window.threeJsApp) {
             window.threeJsApp.pauseRendering();
         }
     }
+}
+
+function lazyLoadVideo(video) {
+    const videoSrc = video.getAttribute('data-src');
+    const videoId = video.id;
+    const spinnerId = videoId.replace('video-', 'spinner-');
+    const spinner = document.getElementById(spinnerId);
+
+    if (!videoSrc || video.src) {
+        return;
+    }
+
+    if (spinner) {
+        spinner.classList.remove('hidden');
+    }
+
+    const source = document.createElement('source');
+    source.src = videoSrc;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+
+    video.addEventListener('loadeddata', function onLoadedData() {
+        if (spinner) {
+            spinner.classList.add('hidden');
+        }
+        video.classList.add('loaded');
+
+        video.play().then(() => {
+            const playBtn = video.parentElement.querySelector('.play-btn');
+            if (playBtn) playBtn.classList.add('playing');
+        }).catch(err => {
+            console.log('Autoplay prevented:', err);
+            const playBtn = video.parentElement.querySelector('.play-btn');
+            if (playBtn) {
+                playBtn.classList.remove('playing');
+            }
+        });
+
+        video.removeEventListener('loadeddata', onLoadedData);
+    });
+
+    video.addEventListener('error', function onError() {
+        console.error('Error loading video:', videoSrc);
+        if (spinner) {
+            spinner.classList.add('hidden');
+        }
+        video.removeEventListener('error', onError);
+    });
+
+    video.load();
 }
 
 function initializeCardStack(panelId) {
@@ -419,17 +457,7 @@ function switchPanel(currentPanelId, nextPanelId) {
 
         const nextVideo = nextPanel.querySelector('video');
         if (nextVideo) {
-            nextVideo.load();
-            setTimeout(() => {
-                nextVideo.play().then(() => {
-                    const playBtn = nextVideo.parentElement.querySelector('.play-btn');
-                    if (playBtn) playBtn.classList.add('playing');
-                }).catch(err => {
-                    console.log('Autoplay prevented:', err);
-                    const playBtn = nextVideo.parentElement.querySelector('.play-btn');
-                    if (playBtn) playBtn.classList.remove('playing');
-                });
-            }, 50);
+            lazyLoadVideo(nextVideo);
         }
     }, 150);
 }
