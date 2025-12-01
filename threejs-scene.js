@@ -7,7 +7,7 @@ const gameData = [
     description: 'Practice your precision',
     year: '2024',
     panelId: 'panel-aimtrainer',
-    imagePath: './Media/AimTrain2.png',
+    imagePath: '/Media/AimTrain2.png',
     color: 0x1a1a1a,
     reflectionColor: 0xff4444
   },
@@ -17,7 +17,7 @@ const gameData = [
     description: 'Explosive Isometric Couch PvP',
     year: '2025',
     panelId: 'panel-bombbrawl',
-    imagePath: './Media/BombBrawl.png',
+    imagePath: '/Media/BombBrawl.png',
     color: 0x2a2a2a,
     reflectionColor: 0xffaa44
   },
@@ -27,7 +27,7 @@ const gameData = [
     description: 'Single Player Paddle Simulation',
     year: '2025',
     panelId: 'panel-paddle',
-    imagePath: './Media/PaddlePoster.png',
+    imagePath: '/Media/PaddlePoster.png',
     color: 0x2a2a2a,
     reflectionColor: 0x44aaff
   },
@@ -37,7 +37,7 @@ const gameData = [
     description: 'Online multiplayer isometric shooter',
     year: '2025',
     panelId: 'panel-respawn2',
-    imagePath: './Media/RESPAWN3.jpg',
+    imagePath: '/Media/RESPAWN3.jpg',
     color: 0x3a3a3a,
     reflectionColor: 0x44ff88
   }
@@ -217,7 +217,7 @@ class InfoPanel {
     this.ctx = ctx;
 
     const texture = new THREE.CanvasTexture(canvas);
-    texture.encoding = THREE.sRGBEncoding;
+    texture.colorSpace = THREE.SRGBColorSpace;
     texture.minFilter = THREE.LinearFilter;
     texture.magFilter = THREE.LinearFilter;
 
